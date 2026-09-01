@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://df0yo3wqtybsl"]
+
+[ext_resource type="Script" uid="uid://dkbugg4srtkt" path="res://bomb.gd" id="1_nfxiy"]
+[ext_resource type="Texture2D" uid="uid://bsmrn21flgvb8" path="res://bomb.png" id="2_6w74q"]
+[ext_resource type="Texture2D" uid="uid://c8tu7rv3p8dg6" path="res://MonedaD.png" id="2_nfxiy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7riw"]
+radius = 14.142136
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
+atlas = ExtResource("2_nfxiy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7riw"]
+atlas = ExtResource("2_nfxiy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdq0q"]
+atlas = ExtResource("2_nfxiy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14il"]
+atlas = ExtResource("2_nfxiy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4etq"]
+atlas = ExtResource("2_nfxiy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qpsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6w74q")
+}],
+"loop": 1,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t63x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7riw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdq0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4etq")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5gmh"]
+radius = 13.341664
+
+[node name="Bomb" type="RigidBody2D" unique_id=2084339973]
+mass = 2.0
+can_sleep = false
+script = ExtResource("1_nfxiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1639994548]
+shape = SubResource("CircleShape2D_v7riw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=445620657]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_6qpsl")
+animation = &"bomb"
+autoplay = "bomb"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=825036055]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=861482967]
+shape = SubResource("CircleShape2D_d5gmh")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=219991599]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

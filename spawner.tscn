@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bdenkwvqd3ck4"]
+
+[ext_resource type="Script" uid="uid://cf6iik3r2g0rh" path="res://coin_spawner.gd" id="1_yp5lu"]
+[ext_resource type="PackedScene" uid="uid://dsgecj2f8c5gl" path="res://coin.tscn" id="2_ttk4a"]
+[ext_resource type="PackedScene" uid="uid://df0yo3wqtybsl" path="res://bomb.tscn" id="3_mcln3"]
+
+[node name="Spawner" type="Node2D" unique_id=1778876441]
+
+[node name="CoinSpawner" type="Node2D" parent="." unique_id=2122092369]
+script = ExtResource("1_yp5lu")
+falling_items = Array[PackedScene]([ExtResource("2_ttk4a"), ExtResource("3_mcln3")])
+
+[node name="Timer" type="Timer" parent="CoinSpawner" unique_id=1463604321]
+autostart = true

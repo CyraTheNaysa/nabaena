@@ -15,6 +15,11 @@ run/main_scene="uid://blpali4cnneu4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventController="*uid://kqh5p82nx5t7"
+GameController="*uid://bfgsdfmo3vkeb"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -49,6 +54,7 @@ Jump={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
