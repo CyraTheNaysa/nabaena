@@ -59,11 +59,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5gmh"]
-radius = 13.341664
+radius = 21.023796
 
 [node name="Bomb" type="RigidBody2D" unique_id=2084339973]
 mass = 2.0
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_nfxiy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1639994548]
@@ -71,13 +73,16 @@ shape = SubResource("CircleShape2D_v7riw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=445620657]
 position = Vector2(0, -2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_6qpsl")
 animation = &"bomb"
 autoplay = "bomb"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=825036055]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=861482967]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_d5gmh")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=219991599]
